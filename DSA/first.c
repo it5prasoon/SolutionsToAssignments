@@ -1,21 +1,23 @@
 #include<stdio.h>
 #include<stdlib.h>
-int a[20];
-int m,n,p,ELEM,i,j,key,POS,temp;
+int a[20],b[20],c[40];
+int m,n,p,val,i,j,key,pos,temp;
+/*Function Prototype*/
 void create();
 void display();
 void insert();
 void del();
 int main()
 {
-        char choice;
+        int choice;
         do{
-                printf("Menu\n");
+                printf("\n\n--------Menu-----------\n");
                 printf("1.Create\n");
                 printf("2.Display\n");
                 printf("3.Insert\n");
                 printf("4.Delete\n");
                 printf("5.Exit\n");
+                printf("-----------------------");
                 printf("\nEnter your choice:\t");
                 scanf("%d",&choice);
                 switch(choice)
@@ -28,7 +30,7 @@ int main()
                         case 3:
                                         insert();
                                         break;
-
+ 
                         case 4:
                                         del();
                                         break;
@@ -39,10 +41,10 @@ int main()
                                         printf("\nInvalid choice:\n");
                                         break;
                 }
-        }while(choice!=4);
+        }while(choice!=5);
 return 0;
 }
-void create()
+void create() //creating an array
 {
         printf("\nEnter the size of the array elements:\t");
         scanf("%d",&n);
@@ -51,40 +53,39 @@ void create()
         {
                 scanf("%d",&a[i]);
         }
-}
-void display()
+}//end of create()
+void display()  //displaying an array elements
 {
         int i;
         printf("\nThe array elements are:\n");
         for(i=0;i<n;i++){
-                 printf("%d\t",a[i]);
+                 printf("%d\t",a[i]);         
          }
-         printf("\n");
- }
-void insert()
-{
-    printf("\nEnter the position for the new element:\t");
-    scanf("%d",&POS);
-    printf("\nEnter the element to be inserted :\t");
-    scanf("%d",&ELEM);
-    for(i=n-1;i>=POS;i--)
+ }//end of display() 
+void insert()   //inserting an element in to an array  
+{         
+    printf("\nEnter the position for the new element:\t");         
+    scanf("%d",&pos);         
+    printf("\nEnter the element to be inserted :\t");         
+    scanf("%d",&val);         
+    for(i=n-1;i>=pos;i--)
         {
                 a[i+1]=a[i];
         }
-        a[POS]=ELEM;
+        a[pos]=val;
         n=n+1;
-}
-
-
-void del()
+}//end of insert()
+ 
+ 
+void del()      //deleting an array element
 {
         printf("\nEnter the position of the element to be deleted:\t");
-        scanf("%d",&POS);
-        ELEM=a[POS];
-        for(i=POS;i<n-1;i++)
+        scanf("%d",&pos);
+        val=a[pos];
+        for(i=pos;i<n-1;i++)
         {
                 a[i]=a[i+1];
         }
         n=n-1;
-        printf("\nThe deleted element is =%d",ELEM);
-}
+        printf("\nThe deleted element is =%d",val);
+}//end of delete()
